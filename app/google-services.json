@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "280207485263",
+    "firebase_url": "https://comets-38310.firebaseio.com",
+    "project_id": "comets-38310",
+    "storage_bucket": "comets-38310.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280207485263:android:dd5eec45583c89a4c07d3a",
+        "android_client_info": {
+          "package_name": "com.example.lostfoundpets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "280207485263-l42eavgc0g2docnm1mmihh6rmi2aqani.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqDbeQEBNPa650OO-qOj-hItvGIC0rOf4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "280207485263-l42eavgc0g2docnm1mmihh6rmi2aqani.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
