@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Lost &amp; Found Pets</string>
     <string name="testHiButton">HI!</string>
+    <string name="title_activity_main_bottom">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Parola</string>
