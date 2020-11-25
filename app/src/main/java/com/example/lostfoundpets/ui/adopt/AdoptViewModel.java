@@ -1,16 +1,15 @@
-package com.example.lostfoundpets.ui.home;
+package com.example.lostfoundpets.ui.adopt;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
-
+public class AdoptViewModel extends ViewModel {
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public AdoptViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("");
+        mText.setValue("Adopt Fragment");
     }
 
     public LiveData<String> getText() {

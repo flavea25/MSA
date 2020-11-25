@@ -2,7 +2,7 @@
     <string name="app_name">Lost &amp; Found Pets</string>
     <string name="testHiButton">HI!</string>
     <string name="title_activity_main_bottom">MainActivity</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">Lost &amp; Found Pets</string>
     <string name="title_profile">Profile</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_login">LoginActivity</string>
@@ -16,5 +16,7 @@
     <string name="login_failed">"Login esuat"</string>
     <string name="title_activity_signup">SignupActivity</string>
     <string name="signup_failed">Signup failed</string>
-    <string name="found">found</string>
+    <string name="lost">Lost Fragment</string>
+    <string name="found">Found Fragment</string>
+    <string name="adopt">Adopt Fragment</string>
 </resources>

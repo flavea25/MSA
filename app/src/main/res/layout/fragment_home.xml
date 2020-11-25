@@ -7,51 +7,53 @@
     tools:context=".ui.home.HomeFragment">
 
     <ImageButton
-        android:id="@+id/found"
+        android:id="@+id/lost_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="179dp"
         android:layout_marginStart="113dp"
         android:layout_marginEnd="114dp"
-        android:layout_marginBottom="16dp"
-        android:src="@mipmap/ic_found"
-        app:layout_constraintBottom_toTopOf="@+id/adopt"
+        android:contentDescription="@string/found"
+        android:padding="@dimen/zero"
+        android:src="@mipmap/ic_lost"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.802"
-        android:contentDescription="@string/found" />
+        app:layout_constraintTop_toBottomOf="@+id/adopt_button"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/adopt"
+        android:id="@+id/adopt_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="113dp"
         android:layout_marginEnd="114dp"
         android:layout_marginBottom="71dp"
+        android:contentDescription="@string/found"
+        android:padding="@dimen/zero"
         android:src="@mipmap/ic_adopt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.563"
-        android:contentDescription="@string/found" />
+        app:layout_constraintVertical_bias="0.498" />
 
     <ImageButton
-        android:id="@+id/lost"
+        android:id="@+id/found_button"
         android:layout_width="wrap_content"
-        android:layout_height="179dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="113dp"
         android:layout_marginEnd="114dp"
-        android:src="@mipmap/ic_lost"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:contentDescription="@string/found"
+        android:padding="@dimen/zero"
+        android:src="@mipmap/ic_found"
+        app:layout_constraintBottom_toTopOf="@+id/adopt_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_home"
-        app:layout_constraintVertical_bias="0.534"
-        android:contentDescription="@string/found" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/text_home"
@@ -64,9 +66,9 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.535" />
+        app:layout_constraintVertical_bias="0.488" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
