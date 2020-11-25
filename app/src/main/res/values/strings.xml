@@ -16,4 +16,5 @@
     <string name="login_failed">"Login esuat"</string>
     <string name="title_activity_signup">SignupActivity</string>
     <string name="signup_failed">Signup failed</string>
+    <string name="found">found</string>
 </resources>
