@@ -24,26 +24,43 @@ public class HomeFragment extends Fragment {
         ImageButton foundButton = root.findViewById(R.id.found_button);
         ImageButton adoptButton = root.findViewById(R.id.adopt_button);
 
-        lostButton.setOnClickListener(v -> getActivity()
-            .getSupportFragmentManager()
-            .beginTransaction()
-            .setReorderingAllowed(true)
-            .replace(R.id.nav_host_fragment, LostFragment.class,null)
-//            .addToBackStack("home")
-            .commit());
-        foundButton.setOnClickListener(v -> getActivity()
-            .getSupportFragmentManager()
-            .beginTransaction()
-            .setReorderingAllowed(true)
-            .replace(R.id.nav_host_fragment, FoundFragment.class,null)
-            .commit());
-        adoptButton.setOnClickListener(v -> getActivity()
-            .getSupportFragmentManager()
-            .beginTransaction()
-            .setReorderingAllowed(true)
-            .replace(R.id.nav_host_fragment, AdoptFragment.class,null)
-            .commit());
+        lostButton.setOnClickListener(v -> {
+            getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .setReorderingAllowed(true)
+                    .replace(R.id.home_fragment, LostFragment.class,null)
+//                    .addToBackStack(null)
+                    .commit();
+            makeButtonsDisappear(lostButton, foundButton, adoptButton);
+        });
+        foundButton.setOnClickListener(v -> {
+            getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .setReorderingAllowed(true)
+                    .replace(R.id.home_fragment, FoundFragment.class,null)
+//                    .addToBackStack(null)
+                    .commit();
+            makeButtonsDisappear(lostButton, foundButton, adoptButton);
+        });
+        adoptButton.setOnClickListener(v -> {
+            getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .setReorderingAllowed(true)
+                    .replace(R.id.home_fragment, AdoptFragment.class,null)
+//                    .addToBackStack(null)
+                    .commit();
+            makeButtonsDisappear(lostButton, foundButton, adoptButton);
+        });
 
         return root;
+    }
+
+    private void makeButtonsDisappear(ImageButton lostButton, ImageButton foundButton, ImageButton adoptButton) { //TODO replace
+        lostButton.setVisibility(View.GONE);
+        foundButton.setVisibility(View.GONE);
+        adoptButton.setVisibility(View.GONE);
     }
 }
