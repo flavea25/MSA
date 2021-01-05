@@ -26,6 +26,7 @@ public class AdoptFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         AdoptViewModel adoptViewModel = new ViewModelProvider(this).get(AdoptViewModel.class);
         View root = inflater.inflate(R.layout.fragment_adopt, container, false);
+        
         final TextView textView = root.findViewById(R.id.text_adopt);
         adoptViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override

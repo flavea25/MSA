@@ -26,6 +26,7 @@ public class LostFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         LostViewModel lostViewModel = new ViewModelProvider(this).get(LostViewModel.class);
         View root = inflater.inflate(R.layout.fragment_lost, container, false);
+
         final TextView textView = root.findViewById(R.id.text_lost);
         lostViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override

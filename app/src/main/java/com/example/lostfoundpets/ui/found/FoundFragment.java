@@ -26,6 +26,7 @@ public class FoundFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         FoundViewModel foundViewModel = new ViewModelProvider(this).get(FoundViewModel.class);
         View root = inflater.inflate(R.layout.fragment_found, container, false);
+
         final TextView textView = root.findViewById(R.id.text_found);
         foundViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
