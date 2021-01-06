@@ -1,9 +1,5 @@
 package com.example.lostfoundpets.ui.lost;
 
-import androidx.annotation.RequiresApi;
-import androidx.lifecycle.ViewModelProvider;
-
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.lostfoundpets.MyAdapter;
@@ -25,23 +22,19 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class LostFragment extends Fragment {
     private final CollectionReference posts = FirebaseFirestore.getInstance().collection("posts");
-    private List<Map<String,Object>> toShowPosts = new ArrayList<>();
-    private RecyclerView recyclerView;
+    private final List<Map<String,Object>> toShowPosts = new ArrayList<>();
     private MyAdapter adapter;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        LostViewModel lostViewModel = new ViewModelProvider(this).get(LostViewModel.class);
         View root = inflater.inflate(R.layout.fragment_lost, container, false);
 
-        recyclerView = root.findViewById(R.id.posts_lost);
+        RecyclerView recyclerView = root.findViewById(R.id.posts_lost);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         adapter = new MyAdapter(this.getActivity(), (ArrayList<Map<String, Object>>) toShowPosts);
@@ -54,6 +47,8 @@ public class LostFragment extends Fragment {
                         if(task.getResult().isEmpty()){
                             TextView noPosts = root.findViewById(R.id.no_posts);
                             noPosts.setVisibility(View.VISIBLE);
+                            LinearLayout filterBar = root.findViewById(R.id.filter_bar);
+                            filterBar.setVisibility(View.GONE);
                         }
                         else {
                             for (QueryDocumentSnapshot post : task.getResult()) {
@@ -64,24 +59,20 @@ public class LostFragment extends Fragment {
                     } else {
                         TextView errorRetrieving = root.findViewById(R.id.error_retrieving);
                         errorRetrieving.setVisibility(View.VISIBLE);
+                        LinearLayout filterBar = root.findViewById(R.id.filter_bar);
+                        filterBar.setVisibility(View.GONE);
                     }
                 });
 
-
-
-
         ImageButton addButton = root.findViewById(R.id.add_button);
-        addButton.setOnClickListener(v -> {
-            getActivity()
-                    .getSupportFragmentManager()
-                    .beginTransaction()
-                    .setReorderingAllowed(true)
-                    .replace(R.id.home_fragment, AddPostFragment.class,null)
-//                    .addToBackStack(null)
-                    .commit();
-        });
+        addButton.setOnClickListener(v -> getActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .setReorderingAllowed(true)
+                .replace(R.id.home_fragment, AddPostFragment.class,null)
+                .addToBackStack(null)
+                .commit());
 
         return root;
     }
-
 }

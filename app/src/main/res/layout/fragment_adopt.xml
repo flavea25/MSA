@@ -1,14 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ui.adopt.AdoptFragment">
+
+<ImageView
+    android:id="@+id/banner_image"
+    android:layout_width="414dp"
+    android:layout_height="127dp"
+    android:background="@mipmap/ic_banner_background"
+    android:clickable="false"
+    android:contentDescription="@string/lost_banner"
+    android:foreground="@mipmap/ic_banner_foreground"
+    android:src="@mipmap/ic_banner_lost"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="1.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.0"
+    tools:ignore="UnusedAttribute"
+    tools:targetApi="m" />
+
+<TextView
+    android:id="@+id/text_adopt"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.adopt.AdoptFragment">
+    android:layout_height="wrap_content"
+    android:fontFamily="sans-serif-black"
+    android:text="@string/found"
+    android:textAlignment="center"
+    android:textColor="#FFFFFF"
+    android:textSize="50sp"
+    app:layout_constraintBottom_toBottomOf="@+id/banner_image"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.488" />
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/add_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:clickable="true"
+    android:contentDescription="@string/add"
+    android:focusable="true"
+    android:foreground="@drawable/ic_add_button_foreground"
+    app:backgroundTint="@color/purple_700"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.954"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:rippleColor="#FFFFFF"
+    tools:ignore="UnusedAttribute"
+    tools:targetApi="m" />
+
+<LinearLayout
+    android:id="@+id/filter_bar"
+    android:layout_width="411dp"
+    android:layout_height="30dp"
+    android:background="#FFFFFF"
+    android:orientation="horizontal"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.211">
+
+    <ImageView
+        android:id="@+id/search_image"
+        android:layout_width="24dp"
+        android:layout_height="35dp"
+        android:contentDescription="@string/search_icon"
+        android:src="@android:drawable/ic_search_category_default" />
 
     <TextView
-        android:id="@+id/text_adopt"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/adopt" />
+        android:id="@+id/filter_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/filter_search"
+        android:textAlignment="center"
+        android:textSize="15sp" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/pet_filter"
+        android:layout_width="74dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="2dp"
+        android:text="@string/pet_filter"
+        android:textAlignment="center"
+        android:textColor="#232323"
+        android:textSize="11sp"
+        app:backgroundTint="#AFAFAF"
+        tools:ignore="SmallSp" />
+
+    <Button
+        android:id="@+id/area_filter"
+        android:layout_width="74dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="2dp"
+        android:text="@string/area_filter"
+        android:textAlignment="center"
+        android:textColor="#232323"
+        android:textSize="11sp"
+        app:backgroundTint="#AFAFAF"
+        tools:ignore="SmallSp" />
+
+    <Button
+        android:id="@+id/color_filter"
+        android:layout_width="74dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="2dp"
+        android:text="@string/color_filter"
+        android:textAlignment="center"
+        android:textColor="#232323"
+        android:textSize="11sp"
+        app:backgroundTint="#AFAFAF"
+        tools:ignore="SmallSp" />
+
+</LinearLayout>
+
+<TextView
+    android:id="@+id/no_posts"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/no_posts"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/filter_bar" />
+
+<TextView
+    android:id="@+id/error_retrieving"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/database_error_message"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/filter_bar" />
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/posts_adopt"
+    android:layout_width="411dp"
+    android:layout_height="393dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="1.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
