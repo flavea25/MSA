@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    app:flow_verticalAlign="center"
     tools:context=".ui.lost.LostFragment">
+
+    <ImageView
+        android:id="@+id/banner_image"
+        android:layout_width="match_parent"
+        android:layout_height="155dp"
+        android:background="@mipmap/ic_banner_background"
+        android:clickable="false"
+        android:contentDescription="@string/lost_banner"
+        android:foreground="@mipmap/ic_banner_foreground"
+        android:src="@mipmap/ic_banner_lost"
+        tools:ignore="UnusedAttribute"
+        tools:targetApi="m" />
 
     <TextView
         android:id="@+id/text_lost"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/lost" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/lost"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="50sp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="360dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:foreground="@drawable/ic_add_button_foreground"
+        app:backgroundTint="@color/purple_700"
+        app:rippleColor="#FFFFFF"
+        tools:targetApi="m"
+        android:contentDescription="@string/add"
+        tools:ignore="UnusedAttribute"
+        android:focusable="true" />
 
 </FrameLayout>

@@ -1,39 +1,38 @@
 package com.example.lostfoundpets.ui.lost;
 
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageButton;
 
 import com.example.lostfoundpets.R;
+import com.example.lostfoundpets.ui.addpost.AddPostFragment;
 
 public class LostFragment extends Fragment {
-
-    public static LostFragment newInstance() {
-        return new LostFragment();
-    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         LostViewModel lostViewModel = new ViewModelProvider(this).get(LostViewModel.class);
         View root = inflater.inflate(R.layout.fragment_lost, container, false);
 
-        final TextView textView = root.findViewById(R.id.text_lost);
-        lostViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
+        ImageButton addButton = root.findViewById(R.id.add_button);
+        addButton.setOnClickListener(v -> {
+            getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .setReorderingAllowed(true)
+                    .replace(R.id.home_fragment, AddPostFragment.class,null)
+//                    .addToBackStack(null)
+                    .commit();
         });
+
         return root;
     }
 
