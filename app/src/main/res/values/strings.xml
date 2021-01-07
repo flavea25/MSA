@@ -1,10 +1,13 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Lost &amp; Found Pets</string>
     <string name="testHiButton">HI!</string>
     <string name="title_activity_main_bottom">MainActivity</string>
-    <string name="title_home">Lost &amp; Found Pets</string>
+    <string name="title_home">Home</string>
     <string name="title_profile">Profile</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_lost">Lost</string>
+    <string name="title_found">Found</string>
+    <string name="title_adopt">Adopt</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Parola</string>
@@ -16,7 +19,30 @@
     <string name="login_failed">"Login esuat"</string>
     <string name="title_activity_signup">SignupActivity</string>
     <string name="signup_failed">Signup failed</string>
-    <string name="lost">Lost Fragment</string>
-    <string name="found">Found Fragment</string>
-    <string name="adopt">Adopt Fragment</string>
+    <string name="lost">LOST</string>
+    <string name="found">FOUND</string>
+    <string name="adopt">ADOPT</string>
+    <string name="lost_banner">Lost Banner</string>
+    <string name="add">Add</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_icon">Magnifier Glass for Search</string>
+    <string name="filter_search">Filter Search</string>
+    <string name="pet_filter">Pet</string>
+    <string name="area_filter">Area</string>
+    <string name="color_filter">Color</string>
+    <string name="no_posts">No Posts</string>
+    <string name="database_error_message">Sorry, we encountered an error!\nPlease try again later.</string>
+    <string name="pet_image">Pet Image</string>
+    <string name="location_title">Location</string>
+    <string name="location_dummy">Timisoara</string>
+    <string name="description_title">Description</string>
+    <string name="description_dummy">Un text foarte, foarte lung sa vad daca se intinde pe doua randuri si ce se intampla atunci cand depaseste si alea 2 randuri</string>
+    <string name="add_post_title">Add Post</string>
+    <string name="category_title">Category:</string>
+    <string name="camera_description">Camera (add photo)</string>
+    <string name="sex_filter">Sex</string>
+    <string name="description_hint">Description (unique traits, name, breed, exact location)</string>
+    <string name="confirm_button">CONFIRM</string>
+    <string name="cancel_button" tools:ignore="ButtonCase">CANCEL</string>
 </resources>

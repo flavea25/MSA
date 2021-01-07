@@ -4,40 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
-
-    <ImageButton
-        android:id="@+id/lost_button"
-        android:layout_width="wrap_content"
-        android:layout_height="179dp"
-        android:layout_marginStart="113dp"
-        android:layout_marginEnd="114dp"
-        android:contentDescription="@string/found"
-        android:padding="@dimen/zero"
-        android:src="@mipmap/ic_lost"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adopt_button"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageButton
-        android:id="@+id/adopt_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="113dp"
-        android:layout_marginEnd="114dp"
-        android:layout_marginBottom="71dp"
-        android:contentDescription="@string/found"
-        android:padding="@dimen/zero"
-        android:src="@mipmap/ic_adopt"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
+    tools:context=".ui.home.HomeFragment"
+    android:id="@+id/home_fragment">
 
     <ImageButton
         android:id="@+id/found_button"
@@ -45,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="113dp"
         android:layout_marginEnd="114dp"
+        android:background="@null"
         android:contentDescription="@string/found"
         android:padding="@dimen/zero"
         android:src="@mipmap/ic_found"
@@ -55,20 +24,39 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
+    <ImageButton
+        android:id="@+id/adopt_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_marginStart="113dp"
+        android:layout_marginEnd="114dp"
+        android:layout_marginBottom="71dp"
+        android:background="@null"
+        android:contentDescription="@string/found"
+        android:padding="@dimen/zero"
+        android:src="@mipmap/ic_adopt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.488" />
+        app:layout_constraintVertical_bias="0.501" />
+
+    <ImageButton
+        android:id="@+id/lost_button"
+        android:layout_width="wrap_content"
+        android:layout_height="179dp"
+        android:layout_marginStart="113dp"
+        android:layout_marginEnd="114dp"
+        android:background="@null"
+        android:contentDescription="@string/found"
+        android:padding="@dimen/zero"
+        android:src="@mipmap/ic_lost"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adopt_button"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
