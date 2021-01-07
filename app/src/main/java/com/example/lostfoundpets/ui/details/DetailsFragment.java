@@ -1,9 +1,12 @@
 package com.example.lostfoundpets.ui.details;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lostfoundpets.R;
-import com.example.lostfoundpets.ui.addpost.AddPostFragment;
 
 public class DetailsFragment extends Fragment {
     String location, description, color, pet, sex, phoneNumber;
@@ -34,14 +36,20 @@ public class DetailsFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_details, container, false);
 
         setParams(root);
-
-        Button contact = root.findViewById(R.id.button_contact);
-        contact.setOnClickListener(v -> {
-            //TODO open phone app
-                }
-        );
+        manageContactButton(root);
 
         return root;
+    }
+
+    private void manageContactButton(View root) {
+        Button contact = root.findViewById(R.id.button_contact);
+        contact.setOnClickListener(v -> {
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    Log.d("phone","================PN: "+this.phoneNumber);
+                    intent.setData(Uri.parse("tel:"+this.phoneNumber));
+                    startActivity(intent);
+                }
+        );
     }
 
     private void setParams(View root) {
