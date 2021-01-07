@@ -38,8 +38,7 @@ public class LoggedProfileFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_profile_logged, container, false);
         fAuth = FirebaseAuth.getInstance();
-        Button logoutButton = (Button)root.findViewById(R.id.logout_button);
-        TextView textView = root.findViewById(R.id.notLogged);
+        Button logoutButton = root.findViewById(R.id.logout_button);
         logoutButton.setOnClickListener(v -> {
             fAuth.signOut();
             startActivity(new Intent(getContext(), MainActivity.class));
