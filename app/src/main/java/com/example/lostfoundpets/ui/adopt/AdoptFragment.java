@@ -1,12 +1,6 @@
 package com.example.lostfoundpets.ui.adopt;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +8,15 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.lostfoundpets.MyAdapter;
 import com.example.lostfoundpets.R;
 import com.example.lostfoundpets.ui.addpost.AddPostFragment;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -29,11 +29,18 @@ public class AdoptFragment extends Fragment {
     private final CollectionReference posts = FirebaseFirestore.getInstance().collection("posts");
     private final List<Map<String,Object>> toShowPosts = new ArrayList<>();
     private MyAdapter adapter;
+    private FirebaseAuth fAuth;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_adopt, container, false);
-
+        fAuth = FirebaseAuth.getInstance();
+        ImageButton addButton = root.findViewById(R.id.add_button);
+        if(fAuth.getCurrentUser() != null){
+            addButton.setVisibility(View.VISIBLE);
+        }else{
+            addButton.setVisibility(View.GONE);
+        }
         RecyclerView recyclerView = root.findViewById(R.id.posts_adopt);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
@@ -64,7 +71,6 @@ public class AdoptFragment extends Fragment {
                     }
                 });
 
-        ImageButton addButton = root.findViewById(R.id.add_button);
         addButton.setOnClickListener(v -> getActivity()
                 .getSupportFragmentManager()
                 .beginTransaction()
