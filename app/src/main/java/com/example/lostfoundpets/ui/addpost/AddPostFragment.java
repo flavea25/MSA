@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class AddPostFragment extends Fragment {
 
@@ -36,6 +37,7 @@ public class AddPostFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_add_post, container, false);
 
+        processPhoneNumber();
         manageSpinners(root);
         manageRadioButtons(root);
         manageButtons(root);
@@ -48,8 +50,6 @@ public class AddPostFragment extends Fragment {
         confirm.setOnClickListener(v -> {
             TextInputEditText description = root.findViewById(R.id.description);
             newPost.setDetails(description.getText().toString());
-            Log.d("phonenumber","=========PROFIL LOGAT "+FirebaseAuth.getInstance().getCurrentUser().getEmail()+ ' '+FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
-            newPost.setPhoneNumber(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
             //TODO set photo
             postToFirebaseCloud();
         });
@@ -62,6 +62,21 @@ public class AddPostFragment extends Fragment {
                 .replace(R.id.home_fragment, HomeFragment.class,null)
                 .addToBackStack(null)
                 .commit());
+    }
+
+    private void processPhoneNumber() {
+        AtomicReference<String> pn = new AtomicReference<>("");
+        db.collection("users")
+            .whereEqualTo("email", FirebaseAuth.getInstance().getCurrentUser().getEmail())
+            .get()
+            .addOnCompleteListener(task -> {
+                if(task.isSuccessful() && !task.getResult().isEmpty()) {
+                    newPost.setPhoneNumber(task.getResult().getDocuments().get(0).get("phoneNumber").toString());
+                }
+                else {
+                    Toast.makeText(this.getActivity(), "Couldn't retrieve phone number! :(", Toast.LENGTH_SHORT).show();
+                }
+            });
     }
 
     private void postToFirebaseCloud() {
@@ -100,6 +115,10 @@ public class AddPostFragment extends Fragment {
     }
 
     private void manageRadioButtons(View root) {
+        RadioGroup radioCategory = root.findViewById(R.id.radio_category);
+        RadioButton radioInitial = root.findViewById(radioCategory.getCheckedRadioButtonId());
+        newPost.setCategory(radioInitial.getText().toString());
+
         RadioButton lostChoice = root.findViewById(R.id.radio_lost);
         lostChoice.setOnClickListener(v -> newPost.setCategory(lostChoice.getText().toString()));
 
