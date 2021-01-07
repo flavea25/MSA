@@ -9,10 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.lostfoundpets.R;
-import com.example.lostfoundpets.ui.home.HomeFragment;
 import com.example.lostfoundpets.ui.login.LoginFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -21,7 +19,6 @@ public class ProfileFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        ProfileViewModel profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
         fAuth = FirebaseAuth.getInstance();
         Button loginButton = (Button)root.findViewById(R.id.login_button);
@@ -38,7 +35,6 @@ public class ProfileFragment extends Fragment {
             textView.setVisibility(View.GONE);
         }
 
-        
         loginButton.setOnClickListener(v -> {
             getActivity()
                     .getSupportFragmentManager()
@@ -49,6 +45,7 @@ public class ProfileFragment extends Fragment {
             loginButton.setVisibility(View.GONE);
             textView.setVisibility(View.GONE);
         });
+
         return root;
     }
 }

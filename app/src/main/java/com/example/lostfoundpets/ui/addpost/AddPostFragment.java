@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,8 @@ public class AddPostFragment extends Fragment {
         confirm.setOnClickListener(v -> {
             TextInputEditText description = root.findViewById(R.id.description);
             newPost.setDetails(description.getText().toString());
-//            newPost.setPhoneNumber(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()); //TODO add
+            Log.d("phonenumber","=========PROFIL LOGAT "+FirebaseAuth.getInstance().getCurrentUser().getEmail()+ ' '+FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+            newPost.setPhoneNumber(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
             //TODO set photo
             postToFirebaseCloud();
         });
@@ -77,7 +79,7 @@ public class AddPostFragment extends Fragment {
             post.put("details", newPost.getDetails());
             post.put("location", newPost.getLocation());
             post.put("pet", newPost.getPet());
-//        post.put("phoneNumber", newPost.getPhoneNumber());
+            post.put("phoneNumber", newPost.getPhoneNumber());
             //TODO photoReference
 
             db.collection("posts")
