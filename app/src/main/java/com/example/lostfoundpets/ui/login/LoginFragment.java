@@ -27,7 +27,6 @@ public class LoginFragment extends Fragment {
 
     EditText mEmail,mPassword;
     Button mLoginBtn;
-    TextView mCreateBtn,forgotTextLink;
     FirebaseAuth fAuth;
 
     public View onCreateView(@NonNull LayoutInflater inflater,

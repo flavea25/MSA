@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.lostfoundpets.MainActivity;
 import com.example.lostfoundpets.R;
 import com.example.lostfoundpets.ui.login.LoginFragment;
 import com.example.lostfoundpets.ui.profile.ProfileFragment;
@@ -37,7 +38,7 @@ public class SignupFragment extends Fragment {
     public static final String TAG = "TAG";
     EditText mFullName,mEmail,mPassword,mPhone;
     Button mRegisterBtn;
-    TextView mLoginBtn;
+    TextView mLoginBtn, title;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
@@ -54,12 +55,13 @@ public class SignupFragment extends Fragment {
         mPhone      = root.findViewById(R.id.phoneNumber);
         mRegisterBtn= root.findViewById(R.id.btn_signup);
         mLoginBtn   = root.findViewById(R.id.btn_login);
+        title = root.findViewById(R.id.signuptxt);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
         if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getContext(), ProfileFragment.class));
+            startActivity(new Intent(getContext(), MainActivity.class));
         }
 
         mLoginBtn.setOnClickListener(v -> {
@@ -75,6 +77,7 @@ public class SignupFragment extends Fragment {
             mPhone.setVisibility(View.GONE);
             mRegisterBtn.setVisibility(View.GONE);
             mLoginBtn.setVisibility(View.GONE);
+            title.setVisibility(View.GONE);
         });
 
 
@@ -140,7 +143,19 @@ public class SignupFragment extends Fragment {
                                     Log.d(TAG, "onFailure: " + e.toString());
                                 }
                             });
-                            startActivity(new Intent(getContext(), LoginFragment.class));
+                            getActivity()
+                                    .getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .setReorderingAllowed(true)
+                                    .replace(R.id.signup_fragment, ProfileFragment.class,null)
+                                    .commit();
+                            mFullName.setVisibility(View.GONE);
+                            mEmail.setVisibility(View.GONE);
+                            mPassword.setVisibility(View.GONE);
+                            mPhone.setVisibility(View.GONE);
+                            mRegisterBtn.setVisibility(View.GONE);
+                            mLoginBtn.setVisibility(View.GONE);
+                            title.setVisibility(View.GONE);
 
                         }else {
                             Toast.makeText(getContext(), "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
