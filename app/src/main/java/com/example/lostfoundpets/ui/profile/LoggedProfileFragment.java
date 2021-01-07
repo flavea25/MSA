@@ -73,7 +73,7 @@ public class LoggedProfileFragment extends Fragment {
                         email.setText(documentSnapshot.getString("email"));
 
                     }else {
-                        Log.d("tag", "onEvent: Document do not exists");
+                        Log.d("tag", "onEvent: Document does not exist");
                     }
                 }
             });
