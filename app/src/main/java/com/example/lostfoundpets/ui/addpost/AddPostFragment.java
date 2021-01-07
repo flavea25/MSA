@@ -19,10 +19,16 @@ import android.widget.Toast;
 import com.example.lostfoundpets.R;
 import com.example.lostfoundpets.ui.home.HomeFragment;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddPostFragment extends Fragment {
 
     private final PostModel newPost = new PostModel();
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -41,17 +47,9 @@ public class AddPostFragment extends Fragment {
         confirm.setOnClickListener(v -> {
             TextInputEditText description = root.findViewById(R.id.description);
             newPost.setDetails(description.getText().toString());
-
-            //TODO post to FireBase DataBase -> MACAR SA AFISEZE
-            Toast.makeText(this.getActivity(), "Your post has been published!", Toast.LENGTH_SHORT).show();
-
-            getActivity()
-                    .getSupportFragmentManager()
-                    .beginTransaction()
-                    .setReorderingAllowed(true)
-                    .replace(R.id.home_fragment, HomeFragment.class,null)
-                    .addToBackStack(null)
-                    .commit();
+//            newPost.setPhoneNumber(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()); //TODO add
+            //TODO set photo
+            postToFirebaseCloud();
         });
 
         Button cancel = root.findViewById(R.id.button_cancel);
@@ -62,6 +60,41 @@ public class AddPostFragment extends Fragment {
                 .replace(R.id.home_fragment, HomeFragment.class,null)
                 .addToBackStack(null)
                 .commit());
+    }
+
+    private void postToFirebaseCloud() {
+        if(newPost.details == null || newPost.details.equals("")) {
+            Toast.makeText(getActivity(), "*Add description!", Toast.LENGTH_SHORT).show();
+        }
+        //TODO same check with photo
+
+        else{
+            Map<String, Object> post = new HashMap<>();
+            post.put("category", newPost.getCategory());
+            post.put("sex", newPost.getSex());
+            post.put("color", newPost.getColor());
+            post.put("status", "ACTIVE");
+            post.put("details", newPost.getDetails());
+            post.put("location", newPost.getLocation());
+            post.put("pet", newPost.getPet());
+//        post.put("phoneNumber", newPost.getPhoneNumber());
+            //TODO photoReference
+
+            db.collection("posts")
+                    .add(post)
+                    .addOnSuccessListener(documentReference -> {
+                        Toast.makeText(getActivity(), "Your post has been published!", Toast.LENGTH_SHORT).show();
+
+                        getActivity()
+                                .getSupportFragmentManager()
+                                .beginTransaction()
+                                .setReorderingAllowed(true)
+                                .replace(R.id.home_fragment, HomeFragment.class,null)
+                                .addToBackStack(null)
+                                .commit();
+                    })
+                    .addOnFailureListener(e -> Toast.makeText(getActivity(), "Error adding document!", Toast.LENGTH_SHORT).show());
+        }
     }
 
     private void manageRadioButtons(View root) {

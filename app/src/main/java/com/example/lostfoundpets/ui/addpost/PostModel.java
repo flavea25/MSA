@@ -1,11 +1,9 @@
 package com.example.lostfoundpets.ui.addpost;
 
 public class PostModel {
-    String category, sex, color, status, details, location, pet, photoReference, phoneNumber;
+    String category, sex, color, details, location, pet, photoReference, phoneNumber;
 
-    public String getCategory() {
-        return category;
-    }
+    public String getCategory() { return category; }
 
     public void setCategory(String category) {
         this.category = category;
@@ -25,14 +23,6 @@ public class PostModel {
 
     public void setColor(String color) {
         this.color = color;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public String getDetails() {

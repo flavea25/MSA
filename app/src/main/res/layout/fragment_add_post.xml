@@ -98,7 +98,7 @@
     </RadioGroup>
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/button_add_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:background="#EAEAEA"
