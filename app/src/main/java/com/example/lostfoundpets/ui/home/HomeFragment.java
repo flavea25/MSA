@@ -30,7 +30,6 @@ public class HomeFragment extends Fragment {
                     .beginTransaction()
                     .setReorderingAllowed(true)
                     .replace(R.id.home_fragment, LostFragment.class,null)
-//                    .addToBackStack(null)
                     .commit();
             makeButtonsDisappear(lostButton, foundButton, adoptButton);
         });
@@ -40,7 +39,6 @@ public class HomeFragment extends Fragment {
                     .beginTransaction()
                     .setReorderingAllowed(true)
                     .replace(R.id.home_fragment, FoundFragment.class,null)
-//                    .addToBackStack(null)
                     .commit();
             makeButtonsDisappear(lostButton, foundButton, adoptButton);
         });
@@ -50,7 +48,6 @@ public class HomeFragment extends Fragment {
                     .beginTransaction()
                     .setReorderingAllowed(true)
                     .replace(R.id.home_fragment, AdoptFragment.class,null)
-//                    .addToBackStack(null)
                     .commit();
             makeButtonsDisappear(lostButton, foundButton, adoptButton);
         });
@@ -58,7 +55,7 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
-    private void makeButtonsDisappear(ImageButton lostButton, ImageButton foundButton, ImageButton adoptButton) { //TODO replace
+    private void makeButtonsDisappear(ImageButton lostButton, ImageButton foundButton, ImageButton adoptButton) {
         lostButton.setVisibility(View.GONE);
         foundButton.setVisibility(View.GONE);
         adoptButton.setVisibility(View.GONE);
