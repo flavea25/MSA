@@ -45,4 +45,14 @@
     <string name="description_hint">Description (unique traits, name, breed, exact location)</string>
     <string name="confirm_button">CONFIRM</string>
     <string name="cancel_button" tools:ignore="ButtonCase">CANCEL</string>
+    <string name="color_dummy">Brown</string>
+    <string name="pet_dummy">Other</string>
+    <string name="sex_dummy">Female</string>
+    <string name="contact">Contact</string>
+    <string name="login">Login</string>
+    <string name="e_mail">e_mail</string>
+    <string name="password">password</string>
+    <string name="full_name">full name</string>
+    <string name="signup">SignUp</string>
+    <string name="phone_number">phone number</string>
 </resources>
