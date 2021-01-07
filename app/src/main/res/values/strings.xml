@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Lost &amp; Found Pets</string>
     <string name="testHiButton">HI!</string>
     <string name="title_activity_main_bottom">MainActivity</string>
@@ -37,5 +37,12 @@
     <string name="location_title">Location</string>
     <string name="location_dummy">Timisoara</string>
     <string name="description_title">Description</string>
-    <string name="description_dummy">Un text foarte foarte lung sa vad daca se intinde pe doua randuri si ce se intampla atunci cand depaseste si alea 2 randuri</string>
+    <string name="description_dummy">Un text foarte, foarte lung sa vad daca se intinde pe doua randuri si ce se intampla atunci cand depaseste si alea 2 randuri</string>
+    <string name="add_post_title">Add Post</string>
+    <string name="category_title">Category:</string>
+    <string name="camera_description">Camera (add photo)</string>
+    <string name="sex_filter">Sex</string>
+    <string name="description_hint">Description (unique traits, name, breed, exact location)</string>
+    <string name="confirm_button">CONFIRM</string>
+    <string name="cancel_button" tools:ignore="ButtonCase">CANCEL</string>
 </resources>
