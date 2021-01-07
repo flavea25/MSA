@@ -45,4 +45,8 @@
     <string name="description_hint">Description (unique traits, name, breed, exact location)</string>
     <string name="confirm_button">CONFIRM</string>
     <string name="cancel_button" tools:ignore="ButtonCase">CANCEL</string>
+    <string name="color_dummy">Brown</string>
+    <string name="pet_dummy">Other</string>
+    <string name="sex_dummy">Female</string>
+    <string name="contact">Contact</string>
 </resources>

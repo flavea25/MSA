@@ -29,12 +29,11 @@ public class LostFragment extends Fragment {
     private final CollectionReference posts = FirebaseFirestore.getInstance().collection("posts");
     private final List<Map<String,Object>> toShowPosts = new ArrayList<>();
     private MyAdapter adapter;
-    private FirebaseAuth fAuth;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_lost, container, false);
-        fAuth = FirebaseAuth.getInstance();
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
        ImageButton addButton = root.findViewById(R.id.add_button);
         if(fAuth.getCurrentUser() != null){
             addButton.setVisibility(View.VISIBLE);
